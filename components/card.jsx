@@ -1,9 +1,17 @@
 import React from "react"
 
-export default function Card() {
+export default function Card(props) {
+    let badgeText
+    if (props.item.openSpots === 0) {
+        badgeText = "SOLD OUT"
+    } else if (props.item.location === "Online") {
+        badgeText = "ONLINE"
+    }
+
     return (
         <div className="card">
-                <img src ="../images/katie-zaferes.png"
+                {badgeText && <div className="card--badge">{badgeText}</div>}
+                <img src = {props.item.coverImg}
                  className="card--image" 
                  alt="Main card image."
                  />
@@ -13,13 +21,13 @@ export default function Card() {
                      className="card--star" 
                      alt="Star icon."/>
 
-                    <span>5.0</span>
-                    <span className="gray">(6)</span>
-                    <span className="gray">USA</span>
+                    <span>{props.item.stats.rating}</span>
+                    <span className="gray">({props.item.stats.reviewCount}) • </span>
+                    <span className="gray">{props.item.location}</span>
 
                 </div>
-                <h2>Life Lessons with Katie Zaferes</h2>
-                <p><span className="bold">From $136 / person</span></p>
+                <h2>{props.item.title}</h2>
+                <p><span className="bold">From ${props.item.price} / person</span></p>
 
         </div>
     )

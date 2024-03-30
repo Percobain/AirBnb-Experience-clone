@@ -3,13 +3,25 @@ import './App.css'
 import Navbar from '../components/navbar.jsx'
 import Hero from '../components/hero.jsx'
 import Card from '../components/card.jsx';
+import data from './data.jsx';
 
 export default function App() {
+  const cards = data.map(item => {
   return (
-    <div>
+    <Card 
+        key={item.id} 
+        item = {item}
+    />
+    )
+  })        
+
+  return (
+  <div>
       <Navbar />
       <Hero />
-      <Card />
-    </div>
-  );
+      <section className="cards-list">
+        {cards}
+      </section>
+  </div>
+  )
 }
