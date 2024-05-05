@@ -17,7 +17,7 @@ export default function Card(props) {
                  />
 
                 <div className="card--stats">
-                    <img src="../images/star.png"
+                    <img src="images/star.png"
                      className="card--star" 
                      alt="Star icon."/>
 
